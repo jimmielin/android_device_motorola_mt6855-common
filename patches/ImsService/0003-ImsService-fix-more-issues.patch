@@ -3,13 +3,15 @@ From: electimon <electimon@gmail.com>
 Date: Thu, 6 Mar 2025 19:06:27 +0530
 Subject: [PATCH 3/8] ImsService: fix more issues
 
+MtkRadioExImsIndication does not use MotoExtTelephonyManager in the
+MT6855 V1UDS35H ImsService build, so it is not patched here.
+
 Change-Id: Ifd9933a47df6c41b8d320a700ca91a5aff6db59b
 ---
  .../mediatek/ims/ImsPhoneStateListener.smali  | 20 +++++-----
  .../internal/ImsConfigEventReceiver$1.smali   | 13 ++-----
  .../mediatek/ims/ril/ImsRadioIndication.smali | 39 +------------------
- .../ims/ril/MtkRadioExImsIndication.smali     | 10 ++---
- 4 files changed, 21 insertions(+), 61 deletions(-)
+ 3 files changed, 16 insertions(+), 56 deletions(-)
 
 diff --git a/smali/com/mediatek/ims/ImsPhoneStateListener.smali b/smali/com/mediatek/ims/ImsPhoneStateListener.smali
 index 61f8ea38..c1f316c2 100644
@@ -174,45 +176,6 @@ index 7c2d77b0..d596869a 100644
      .line 370
 -    .end local v2    # "motoExtTM":Lcom/motorola/android/telephony/MotoExtTelephonyManager;
 +    .end local v2    # "motoExtTM":Landroid/telephony/TelephonyManager;
-     :cond_2
-     return-void
- 
-diff --git a/smali/com/mediatek/ims/ril/MtkRadioExImsIndication.smali b/smali/com/mediatek/ims/ril/MtkRadioExImsIndication.smali
-index 9d32281d..a9d2f47a 100644
---- a/smali/com/mediatek/ims/ril/MtkRadioExImsIndication.smali
-+++ b/smali/com/mediatek/ims/ril/MtkRadioExImsIndication.smali
-@@ -187,21 +187,21 @@
-     add-int/lit8 v2, v2, -0x1
- 
-     .line 843
--    new-instance v1, Lcom/motorola/android/telephony/MotoExtTelephonyManager;
-+    new-instance v1, Landroid/telephony/TelephonyManager;
- 
-     iget-object v3, p0, Lcom/mediatek/ims/ril/MtkRadioExImsIndication;->mRil:Lcom/mediatek/ims/ril/ImsRILAdapter;
- 
-     iget-object v3, v3, Lcom/mediatek/ims/ril/ImsRILAdapter;->mContext:Landroid/content/Context;
- 
--    invoke-direct {v1, v3}, Lcom/motorola/android/telephony/MotoExtTelephonyManager;-><init>(Landroid/content/Context;)V
-+    invoke-direct {v1, v3}, Landroid/telephony/TelephonyManager;-><init>(Landroid/content/Context;)V
- 
-     .line 844
--    .local v1, "motoExtTM":Lcom/motorola/android/telephony/MotoExtTelephonyManager;
-+    .local v1, "motoExtTM":Landroid/telephony/TelephonyManager;
-     if-gtz v2, :cond_2
- 
-     iget v3, p0, Lcom/mediatek/ims/ril/MtkRadioExImsIndication;->mPhoneId:I
- 
--    invoke-virtual {v1, v3}, Lcom/motorola/android/telephony/MotoExtTelephonyManager;->getAndResetInTestEmergencyCall(I)Z
-+    invoke-virtual {v1, v3}, Landroid/telephony/TelephonyManager;->getAndResetInTestEmergencyCall(I)Z
- 
-     move-result v3
- 
-@@ -229,7 +229,7 @@
-     invoke-virtual {v3}, Landroid/os/RegistrantList;->notifyRegistrants()V
- 
-     .line 853
--    .end local v1    # "motoExtTM":Lcom/motorola/android/telephony/MotoExtTelephonyManager;
-+    .end local v1    # "motoExtTM":Landroid/telephony/TelephonyManager;
      :cond_2
      return-void
  
