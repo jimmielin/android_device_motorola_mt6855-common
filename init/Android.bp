@@ -11,14 +11,14 @@ sh_binary {
 }
 
 prebuilt_etc {
-    name: "fstab.mt6879",
-    src: "fstab.mt6879",
+    name: "fstab.mt6855",
+    src: "fstab.mt6855",
     vendor: true,
 }
 
 prebuilt_etc {
-    name: "init.connectivity.rc",
-    src: "init.connectivity.rc",
+    name: "init_connectivity.rc",
+    src: "init_connectivity.rc",
     relative_install_path: "init/hw",
     vendor: true,
 }
@@ -30,30 +30,24 @@ prebuilt_etc {
     vendor: true,
 }
 
+
 prebuilt_etc {
-    name: "init_conninfra.rc",
-    src: "init_conninfra.rc",
+    name: "init.mt6855.usb.rc",
+    src: "init.mt6855.usb.rc",
     relative_install_path: "init/hw",
     vendor: true,
 }
 
 prebuilt_etc {
-    name: "init.mt6879.usb.rc",
-    src: "init.mt6879.usb.rc",
+    name: "init.mt6855.power.rc",
+    src: "init.mt6855.power.rc",
     relative_install_path: "init/hw",
     vendor: true,
 }
 
 prebuilt_etc {
-    name: "init.mt6879.power.rc",
-    src: "init.mt6879.power.rc",
-    relative_install_path: "init/hw",
-    vendor: true,
-}
-
-prebuilt_etc {
-    name: "init.recovery.mt6879.rc",
-    src: "init.recovery.mt6879.rc",
+    name: "init.recovery.mt6855.rc",
+    src: "init.recovery.mt6855.rc",
     relative_install_path: "init",
     recovery: true,
 }
@@ -66,8 +60,8 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.mt6879.rc",
-    src: "init.mt6879.rc",
+    name: "init.mt6855.rc",
+    src: "init.mt6855.rc",
     relative_install_path: "init/hw",
     vendor: true,
 }
@@ -101,8 +95,8 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "ueventd.mt6879.rc",
+    name: "ueventd.mt6855.rc",
     filename: "ueventd.rc",
-    src: "ueventd.mt6879.rc",
+    src: "ueventd.mt6855.rc",
     vendor: true,
 }
