@@ -4,6 +4,6 @@
 //
 
 runtime_resource_overlay {
-    name: "LineageApertureOverlayMT6879",
+    name: "NfcOverlayMT6855",
     product_specific: true,
 }

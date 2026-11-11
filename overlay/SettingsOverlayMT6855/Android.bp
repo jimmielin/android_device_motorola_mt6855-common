@@ -4,6 +4,6 @@
 //
 
 runtime_resource_overlay {
-    name: "SettingsOverlayMT6879",
+    name: "SettingsOverlayMT6855",
     vendor: true,
 }

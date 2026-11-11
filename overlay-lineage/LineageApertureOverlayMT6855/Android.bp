@@ -4,6 +4,6 @@
 //
 
 runtime_resource_overlay {
-    name: "FrameworkOverlayMT6879",
-    vendor: true,
+    name: "LineageApertureOverlayMT6855",
+    product_specific: true,
 }

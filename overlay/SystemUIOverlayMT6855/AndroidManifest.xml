@@ -4,9 +4,8 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.android.nfc.overlay.mt6879">
-    <overlay android:targetPackage="com.android.nfc"
-             android:targetName="NfcCustomization"
+          package="com.android.systemui.overlay.mt6855">
+    <overlay android:targetPackage="com.android.systemui"
              android:isStatic="true"
-             android:priority="700" />
+             android:priority="100" />
 </manifest>

@@ -4,6 +4,6 @@
 //
 
 runtime_resource_overlay {
-    name: "NfcOverlayMT6879",
-    product_specific: true,
+    name: "SystemUIOverlayMT6855",
+    vendor: true,
 }

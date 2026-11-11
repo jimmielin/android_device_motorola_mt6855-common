@@ -4,6 +4,6 @@
 //
 
 runtime_resource_overlay {
-    name: "SystemUIOverlayMT6879",
+    name: "FrameworkOverlayMT6855",
     vendor: true,
 }
