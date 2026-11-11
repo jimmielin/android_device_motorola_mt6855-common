@@ -1,1 +1,4 @@
 allow fsck sysfs_power_supply:dir search;
+
+# prodpersist is checked before it is mounted
+allow fsck vendor_prodpersist_block_device:blk_file rw_file_perms;

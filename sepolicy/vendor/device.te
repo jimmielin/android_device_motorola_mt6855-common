@@ -4,3 +4,6 @@ type etsd_device, dev_type;
 # Partitions
 type vendor_hw_block_device, dev_type;
 type vendor_utags_block_device, dev_type;
+type vendor_cid_block_device, dev_type;
+type vendor_logs_block_device, dev_type;
+type vendor_prodpersist_block_device, dev_type;

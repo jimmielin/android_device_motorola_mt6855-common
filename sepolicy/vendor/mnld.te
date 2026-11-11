@@ -1,1 +1,5 @@
 get_prop(mnld, vendor_mot_prop)
+
+# mnld probes properties that are unset on this platform and fall back to
+# defaults; the lookups land in default_prop, which vendor code may not read.
+dontaudit mnld default_prop:file r_file_perms;

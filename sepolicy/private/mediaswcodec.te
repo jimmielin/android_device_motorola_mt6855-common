@@ -1,0 +1,2 @@
+# Software codecs probe vendor version properties that are not exported
+dontaudit mediaswcodec { custom_version_prop misctrl_prop }:file r_file_perms;

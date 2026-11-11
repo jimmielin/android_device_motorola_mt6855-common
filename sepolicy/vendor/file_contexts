@@ -14,13 +14,11 @@
 /mnt/vendor/persist/egis(/.*)?                                                              u:object_r:vendor_persist_fingerprint_file:s0
 /mnt/vendor/persist/fps(/.*)?                                                               u:object_r:vendor_persist_fingerprint_file:s0
 /mnt/vendor/persist/goodix(/.*)?                                                            u:object_r:vendor_persist_fingerprint_file:s0
-/vendor/bin/hw/android\.hardware\.biometrics\.fingerprint-service\.motorola                 u:object_r:hal_fingerprint_default_exec:s0
 
 # Lights
-/vendor/bin/hw/android\.hardware\.lights-service\.mt6879                              u:object_r:hal_light_default_exec:s0
+/vendor/bin/hw/android\.hardware\.lights-service\.mt6855                              u:object_r:hal_light_default_exec:s0
 
 # LiveDisplay
-/vendor/bin/hw/vendor\.lineage\.livedisplay-service\.mt6879                         u:object_r:hal_lineage_livedisplay_default_exec:s0
 
 # Mobicore TEE
 /mnt/vendor/trustlet(/.*)? u:object_r:mnt_vendor_trustlet_file:s0
@@ -47,7 +45,7 @@
 /vendor/bin/init\.mmi\.touch\.sh                                                       u:object_r:vendor_moto_init_shell_exec:s0
 /vendor/bin/init\.mmi\.usb\.sh                                                         u:object_r:vendor_moto_init_shell_exec:s0
 /vendor/bin/init\.modprobe\.sh                                                         u:object_r:vendor_modinstall-sh_exec:s0
-/vendor/bin/init\.oem\.fingerprint2\.sh                                                 u:object_r:vendor_moto_init_shell_exec:s0
+/vendor/bin/init\.oem\.fingerprint\.sh                                                 u:object_r:vendor_moto_init_shell_exec:s0
 /vendor/bin/init\.oem\.hw\.sh                                                          u:object_r:vendor_moto_init_shell_exec:s0
 /vendor/bin/vendor\.mmi\.cxp\.sh                                                       u:object_r:vendor_moto_init_shell_exec:s0
 /vendor/bin/nxpnfcinfo                                                                  u:object_r:nxpnfcinfo_exec:s0
@@ -56,3 +54,18 @@
 /sys/devices/platform/soc/[^*]+/wakeup/wakeup[0-9]+(/.*)?                              u:object_r:sysfs_wakeup:s0
 /sys/devices/virtual/input/input[0-9]+/wakeup[0-9]+(/.*)?                              u:object_r:sysfs_wakeup:s0
 /sys/devices/virtual/misc/[^*]+/wakeup[0-9]+(/.*)?                                     u:object_r:sysfs_wakeup:s0
+
+# Motorola partitions
+/dev/block/by-name/cid                                                                   u:object_r:vendor_cid_block_device:s0
+/dev/block/by-name/hw                                                                    u:object_r:vendor_hw_block_device:s0
+/dev/block/by-name/logs                                                                  u:object_r:vendor_logs_block_device:s0
+/dev/block/by-name/prodpersist                                                           u:object_r:vendor_prodpersist_block_device:s0
+/dev/block/by-name/utags                                                                 u:object_r:vendor_utags_block_device:s0
+/dev/block/by-name/utagsBackup                                                           u:object_r:vendor_utags_block_device:s0
+
+# Hardware revision records
+/data/vendor/hardware_revisions(/.*)?                                                    u:object_r:vendor_hwrev_data_file:s0
+
+# Sockets
+/dev/socket/vendor\.bip_ap                                                               u:object_r:vendor_bip_ap_socket:s0
+/dev/socket/volte_clientapi                                                              u:object_r:vendor_volte_clientapi_socket:s0

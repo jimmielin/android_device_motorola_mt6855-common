@@ -1,0 +1,4 @@
+# Audio framework code probes vendor feature properties that MediaTek
+# platforms do not define (e.g. ro.vendor.qti.va_aosp.support); the lookup
+# falls back to the default when denied.
+dontaudit audioserver vendor_default_prop:file r_file_perms;

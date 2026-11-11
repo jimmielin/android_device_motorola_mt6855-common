@@ -10,3 +10,8 @@ set_prop(vendor_init, vendor_mot_prop)
 # Sku prop
 set_prop(vendor_init, vendor_nfc_prop)
 set_prop(vendor_init, vendor_sku_prop)
+
+# MediaTek modem init scripts try to create /data/vendor_de/md, but only vold
+# may create directories directly under /data/vendor_de; the modem works
+# without it.
+dontaudit vendor_init vendor_userdir_file:dir { write add_name };

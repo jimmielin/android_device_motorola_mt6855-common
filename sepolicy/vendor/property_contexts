@@ -33,3 +33,9 @@ vendor.qti.nfc.chipid u:object_r:vendor_nfc_prop:s0
 # SKU
 ro.boot.product.hardware.sku u:object_r:vendor_sku_prop:s0
 ro.vendor.product.hardware.sku.variant u:object_r:vendor_sku_prop:s0
+
+# Modem carrier configuration selected by vendor.mmi.cxp.sh
+ro.vendor.mtk_md_sbp_custom_value u:object_r:vendor_mtk_cxp_vendor_prop:s0
+
+# Touch firmware status reported by init.mmi.touch.sh
+vendor.hw.touch.status u:object_r:vendor_mot_prop:s0

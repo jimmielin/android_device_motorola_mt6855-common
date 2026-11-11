@@ -1,0 +1,3 @@
+# SurfaceFlinger probes vendor display properties that are not exported to
+# the platform; it uses its defaults when the lookup is denied.
+dontaudit surfaceflinger vendor_default_prop:file r_file_perms;

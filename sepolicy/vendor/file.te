@@ -27,4 +27,10 @@ type vendor_motobox_exec, exec_type, file_type, vendor_file_type;
 type persist_mobicore_file, file_type, vendor_persist_type;
 
 # LiveDisplay
-type vendor_sysfs_livedisplay, sysfs_type, fs_type;
+
+# Motorola hardware revision records (/data/vendor/hardware_revisions)
+type vendor_hwrev_data_file, file_type, data_file_type;
+
+# Sockets created by init for MediaTek services
+type vendor_bip_ap_socket, file_type;
+type vendor_volte_clientapi_socket, file_type, mlstrustedobject;

@@ -13,3 +13,7 @@ allow hal_power_default sysfs_cm_mgr:file rw_file_perms;
 
 # Sensors
 rw_dir_file(hal_power_default, sysfs_sensor)
+
+# Double-tap-to-wake node under the touchscreen class
+allow hal_power_default vendor_sysfs_touchpanel:dir search;
+allow hal_power_default vendor_sysfs_touchpanel:file rw_file_perms;

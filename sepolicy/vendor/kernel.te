@@ -1,1 +1,7 @@
 allow kernel block_device:dir search;
+
+# The utags driver reads and writes the utags and hw partitions directly
+allow kernel {
+    vendor_hw_block_device
+    vendor_utags_block_device
+}:blk_file rw_file_perms;

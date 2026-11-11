@@ -55,3 +55,29 @@ allow vendor_moto_init_shell proc_bootprof:file rw_file_perms;
 
 # ro.boot.product.hardware.sku
 set_prop(vendor_moto_init_shell, vendor_sku_prop)
+
+# init.mmi.block_perm.sh sets ownership and modes on Motorola partitions
+allow vendor_moto_init_shell {
+    vendor_cid_block_device
+    vendor_logs_block_device
+    vendor_utags_block_device
+}:blk_file { getattr setattr };
+
+# hardware_revisions.sh records panel, memory, storage and PMIC details
+allow vendor_moto_init_shell vendor_data_file:dir search;
+allow vendor_moto_init_shell vendor_hwrev_data_file:dir create_dir_perms;
+allow vendor_moto_init_shell vendor_hwrev_data_file:file create_file_perms;
+allow vendor_moto_init_shell proc_cmdline:file r_file_perms;
+r_dir_file(vendor_moto_init_shell, sysfs)
+r_dir_file(vendor_moto_init_shell, sysfs_devices_block)
+
+# Touch scripts adjust touch driver procfs nodes
+allow vendor_moto_init_shell proc:file { getattr setattr };
+
+# vendor.mmi.cxp.sh selects the modem carrier configuration
+set_prop(vendor_moto_init_shell, vendor_mtk_operator_prop)
+
+# init.oem.hw.sh copies ro.build.version.incremental into
+# ro.vendor.build.version.incremental, which only init may set; the build
+# already sets it, so the attempt is harmless.
+dontaudit vendor_moto_init_shell build_vendor_prop:property_service set;
