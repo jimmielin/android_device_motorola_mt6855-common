@@ -1,1 +1,0 @@
-../../aidl/fingerprint/include/fingerprint.h

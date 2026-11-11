@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.lights-service.mt6879"
+#define LOG_TAG "android.hardware.lights-service.mt6855"
 
 #include "Lights.h"
 

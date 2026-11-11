@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-COMMON_PATH := device/motorola/mt6879-common
+COMMON_PATH := device/motorola/mt6855-common
 
 # A/B
 AB_OTA_UPDATER := true
@@ -27,6 +27,14 @@ TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := cortex-a76
 
+# 32-bit vendor daemons (ccci_fsd, vpud, VoLTE stack, codec2) need a 2nd arch.
+TARGET_2ND_ARCH := arm
+TARGET_2ND_ARCH_VARIANT := armv8-2a
+TARGET_2ND_CPU_ABI := armeabi-v7a
+TARGET_2ND_CPU_ABI2 := armeabi
+TARGET_2ND_CPU_VARIANT := generic
+TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a55
+
 # Bootloader
 TARGET_NO_BOOTLOADER := true
 
@@ -34,7 +42,7 @@ TARGET_NO_BOOTLOADER := true
 TARGET_RECOVERY_UI_MARGIN_HEIGHT := 165
 BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/init/fstab.mt6879
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/init/fstab.mt6855
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TARGET_USERIMAGES_USE_F2FS := true
 
@@ -62,19 +70,10 @@ BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
 BOARD_KERNEL_CMDLINE += androidboot.serialconsole=0
 BOARD_KERNEL_CMDLINE += sysctl.kernel.sched_pelt_multiplier=4
 
+# Devices provide prebuilt kernels via TARGET_KERNEL_DIR in their BoardConfig.
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_SOURCE := kernel/motorola/mt6879
-TARGET_KERNEL_CLANG_VERSION := r416183b
-TARGET_KERNEL_CLANG_PATH := $(abspath .)/prebuilts/clang/kernel/$(HOST_PREBUILT_TAG)/clang-$(TARGET_KERNEL_CLANG_VERSION)
-KERNEL_LTO := thin
-TARGET_KERNEL_CONFIG := \
-    gki_defconfig \
-    vendor/mt6879.config \
-    vendor/$(PRODUCT_DEVICE).config
-
-TARGET_KERNEL_DTB := \
-    mediatek/mt6879.dtb
+BOARD_KERNEL_SEPARATED_DTBO := true
 
 BOARD_MKBOOTIMG_ARGS += \
     --dtb_offset $(BOARD_TAGS_OFFSET) \
@@ -157,4 +156,4 @@ WIFI_HAL_INTERFACE_COMBINATIONS += ,{{{STA}, 1}, {{NAN}, 1}}
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
 # Inherit the proprietary files
-include vendor/motorola/mt6879-common/BoardConfigVendor.mk
+include vendor/motorola/mt6855-common/BoardConfigVendor.mk

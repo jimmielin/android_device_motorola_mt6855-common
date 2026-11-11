@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-COMMON_PATH := device/motorola/mt6879-common
+COMMON_PATH := device/motorola/mt6855-common
 
 # Enforce generic ramdisk allow list
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
@@ -83,23 +83,22 @@ PRODUCT_PACKAGES += \
 
 # Init
 PRODUCT_PACKAGES += \
-    fstab.mt6879 \
-    init.connectivity.rc \
+    fstab.mt6855 \
+    init_connectivity.rc \
     init.connectivity.common.rc \
-    init_conninfra.rc \
     init.mmi.rc \
-    init.recovery.mt6879.rc \
-    init.mt6879.usb.rc \
-    init.mt6879.power.rc \
-    init.mt6879.rc \
+    init.recovery.mt6855.rc \
+    init.mt6855.usb.rc \
+    init.mt6855.power.rc \
+    init.mt6855.rc \
     init.mtkgki.rc \
     init.oem.hw.sh \
     init.project.rc \
     init.sensor_2_0.rc \
-    ueventd.mt6879.rc
+    ueventd.mt6855.rc
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/init/fstab.mt6879:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.mt6879
+    $(COMMON_PATH)/init/fstab.mt6855:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.mt6855
 
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -162,9 +161,6 @@ PRODUCT_PACKAGES += \
     fastbootd
 
 # Fingerprint
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint-service.motorola
-
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
 
@@ -202,11 +198,7 @@ PRODUCT_PACKAGES += \
 
 # Light
 PRODUCT_PACKAGES += \
-    android.hardware.lights-service.mt6879
-
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay-service.mt6879
+    android.hardware.lights-service.mt6855
 
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -220,7 +212,7 @@ PRODUCT_PACKAGES += \
     init.zram.rc
 
 PRODUCT_COPY_FILES += \
-    hardware/google/pixel/mm/fstab.zram.40p:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.zram
+    $(COMMON_PATH)/configs/fstab.zram:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.zram
 
 # Overlays
 $(call inherit-product, hardware/mediatek/overlay/mssi.mk)
@@ -228,24 +220,20 @@ $(call inherit-product, hardware/mediatek/overlay/mssi.mk)
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
 PRODUCT_PACKAGES += \
-    FrameworkOverlayMT6879 \
-    SettingsOverlayMT6879 \
-    SystemUIOverlayMT6879 \
+    FrameworkOverlayMT6855 \
+    SettingsOverlayMT6855 \
+    SystemUIOverlayMT6855 \
     Launcher3DeviceOverlay \
-    NfcOverlayMT6879
+    NfcOverlayMT6855
 
 PRODUCT_PACKAGES += \
     NcmTetheringOverlay
 
 PRODUCT_PACKAGES += \
-    LineageApertureOverlayMT6879
+    LineageApertureOverlayMT6855
 
 # Platform
-TARGET_BOARD_PLATFORM := mt6879
-
-# Power-off Alarm
-PRODUCT_PACKAGES += \
-    PowerOffAlarm
+TARGET_BOARD_PLATFORM := mt6855
 
 # Power
 PRODUCT_PACKAGES += \
@@ -267,9 +255,6 @@ ENABLE_VENDOR_RIL_SERVICE := true
 # Radio
 $(call inherit-product, hardware/mediatek/frameworks/mediatek-frameworks.mk)
 
-PRODUCT_PACKAGES += \
-    mdota_symlink
-
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.ims.xml \
@@ -290,7 +275,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.sensors-service.multihal \
     android.hardware.sensors@2.0-subhal-impl-1.0 \
-    sensors.mt6879
+    sensors.mt6855
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
@@ -361,4 +346,4 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/motorola/mt6879-common/mt6879-common-vendor.mk)
+$(call inherit-product, vendor/motorola/mt6855-common/mt6855-common-vendor.mk)
