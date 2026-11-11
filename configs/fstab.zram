@@ -1,0 +1,4 @@
+# zram swap without a writeback backing file: the android12-5.10 kernel reads
+# the backing file from a loop kernel thread in the kernel domain, which may
+# not read files under /data.
+/dev/block/zram0	none	swap	defaults	zramsize=40%
